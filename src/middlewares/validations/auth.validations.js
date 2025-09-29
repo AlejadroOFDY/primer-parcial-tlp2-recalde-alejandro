@@ -8,6 +8,8 @@ export const registerValidation = [
     .withMessage("Faltan campos obligatorios")
     .isLength({ min: 2, max: 50 })
     .withMessage("El campo solo puede tener entre 2 y 50 caracteres inclusive")
+    .isAlphanumeric()
+    .withMessage("username debe ser alfanumérico")
     .custom(async (value, { req }) => {
       const user = UserModel.findOne({ username: value });
       if (user) {
