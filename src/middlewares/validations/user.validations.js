@@ -11,7 +11,7 @@ export const createUserValidation = [
     .isAlphanumeric()
     .withMessage("username debe ser alfanumérico")
     .custom(async (value, { req }) => {
-      const user = UserModel.findOne({ username: value });
+      const user = await UserModel.findOne({ username: value });
       if (user) {
         throw new Error("Username registrado");
       }

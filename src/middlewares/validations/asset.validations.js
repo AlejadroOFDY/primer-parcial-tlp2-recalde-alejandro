@@ -7,7 +7,7 @@ export const createAssetValidation = [
     .notEmpty()
     .withMessage("Faltan campos obligatorios")
     .custom(async (value) => {
-      const asset = AssetModel.findOne({ inventoryNumber: value });
+      const asset = await AssetModel.findOne({ inventoryNumber: value });
       if (asset) {
         throw new Error("Inventory_number registrado");
       }

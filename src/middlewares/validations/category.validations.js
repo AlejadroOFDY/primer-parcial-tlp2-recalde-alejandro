@@ -9,7 +9,7 @@ export const createCategoryValidation = [
     .isLength({ min: 3, max: 100 })
     .withMessage("El campo debe contener entre 3 y 100 caracteres inclusive")
     .custom(async (value) => {
-      const catagory = CategoryModel.findOne({ name: value });
+      const catagory = await CategoryModel.findOne({ name: value });
       if (catagory) {
         throw new Error("Name registrado");
       }
